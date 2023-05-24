@@ -2,9 +2,7 @@
 {% block content %}
 
 
-{% for number in list_of_numbers %}
-<p>{{ number }}</p>
-{% endfor %}
+
 
 <h2>{{ page_title }}</h2>
 <p>
@@ -16,55 +14,42 @@
     superstitious Dwarves also considered thirteen to be an unlucky number, and as Gandalf had planned to leave on other
     business, welcomed a fourteenth to fill into their party.
 </p>
-<div class="row featurette">
-    <div class="col-md-7">
-        <h3>Thorin Oakenshield</h3>
-        <p>
-            Thorin II was born in TA 2746 to Dwarf prince Thráin II in the city of the Lonely Mountain. Early in his
-            youth, he and the other Dwarves of the Lonely Mountain were forced to flee by the dragon Smaug in TA 2770.
-            While in exile, he quickly grew to become a capable warrior. This was demonstrated when he participated in
-            the Battle of Azanulbizar in TA 2799. He fought with one of the Dwarven armies beneath the East-gate of
-            Moria. At some point in the fighting, his shield broke, and using an oaken tree branch found on the ground
-            as a shield, he gained the epithet "Oakenshield," which would remain with him even in death.[2]
 
-            Thorin became King-in-Exile of Durin's Folk in TA 2850 after his father went missing, and died in the
-            dungeons of Dol Guldur.
-        </p>
+{% for member in company %}
+
+<div class="row featurette">
+
+    {% if loop.index % 2 != 0 %} <!--makes the images display left to right-->
+
+    <div class="col-md-7">
+        <h3>{{ loop.index }}. {{member.name}}</h3>
+        <p>{{member.description}}</p>
     </div>
     <div class="col-md-5">
-        <img src="https://static.wikia.nocookie.net/lotr/images/3/3f/ThorinBIG.jpg" alt="Thorin">
+        <img src="{{ member.image_source }}" alt="Thorin" class="featurette-image image-responsive">
     </div>
 
-</div>
-<div class="row featurette">
+    {% else %}
     <div class="col-md-5">
-        <img src="https://static.wikia.nocookie.net/lotr/images/b/b4/The-Hobbit-Fili-and-Kili.jpg" alt="">
+        <img src="{{ member.image_source }}" alt="Thorin" class="featurette-image image-responsive">
     </div>
     <div class="col-md-7">
-        <h3>Filly and Killy</h3>
-        <p>
-            Fíli and Kíli were nephews of Thorin, who was the elder brother of their mother, Dís. They were also nephews
-            of Frerin, grandsons of Thráin II, and great-grandsons of Thrór. Fíli's most distinguishing feature was his
-            long nose, the longest of any of the Dwarves in Thorin's company.
-
-            As the youngest Dwarves, Fíli and Kíli had the sharpest eyes, and were often sent scouting or searching. It
-            was they that found the Front Porch while in the Misty Mountains.
-
-            With the other Dwarves, Fíli and Kíli encountered spiders and were later imprisoned by the Elvenking
-            Thranduil. They escaped the cells thanks to Bilbo, traveling down the river in barrels until they reached
-            Lake-town. The brothers accompanied Thorin and Bilbo to Lake-town while the others rested by the
-            river.
-
-            At the feet of the Lonely Mountain, Fíli and Kíli scouted Ravenhill and found the Front Gate with Balin and
-            Bilbo. Also, with Bilbo, they found the side-door leading into the mountain.
-
-            Both brothers were killed while defending the mortally wounded Thorin Oakenshield in the Battle of Five
-            Armies, and all three were buried with honor.
-        </p>
+        <h3>{{ loop.index }}. {{member.name}}</h3>
+        <p>{{member.description}}</p>
     </div>
-</div>
+    {% endif %}
 
-<div class="row featurette">
+</div>
+{% if loop.index != loop.length %}
+
+<hr class="featurette-divider">
+
+{% endif %}
+
+{% endfor %}
+
+
+<!-- <div class="row featurette">
     <div class="col-md-7">
         <h3>Oin</h3>
         <p>Óin was the older brother of Glóin, cousin of Dwalin and Balin, and uncle of Gimli. Óin's uncle was Fundin,
@@ -243,5 +228,5 @@
     <div class="col-md-5">
         <img src="https://static.wikia.nocookie.net/lotr/images/d/df/The-Hobbit-An-Unexpected-Journey-2012.jpg" alt="">
     </div>
-</div>
+</div> -->
 {% endblock %}
